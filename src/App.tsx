@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import myPic from './assets/mypic.jpg'
-import './App.css'
+import { Link, Routes, Route } from 'react-router-dom'
+import Home from './pages/home'
+import Teste from './pages/teste'
+import HeavyImage from "./pages/heavy-image.tsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+    return (
+        <div className="app">
+            <header className="nav">
+                <nav>
+                    <Link to="/">home</Link>
+                    <span>•</span>
+                    <Link to="/teste">/teste</Link>
+                    <span>•</span>
+                    <Link to="/heavyimage">/heavyimage</Link>
+                </nav>
+            </header>
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={myPic} width={400} height={"100%"} alt="My pic" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+            <main>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/teste" element={<Teste />} />
+                    <Route path="/heavyimage" element={<HeavyImage />} />
+                </Routes>
+            </main>
+        </div>
+    )
 }
-
-export default App
